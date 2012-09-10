@@ -17,7 +17,7 @@
 user: ${user}
 
 # The root directory prepended to these options: pki_dir, cachedir, log_file.
-root_dir: %{root_dir}
+root_dir: ${root_dir}
 
 # The directory to store the pki information in
 pki_dir: ${pki_dir}
