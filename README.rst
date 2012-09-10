@@ -31,6 +31,7 @@ Add to `buildout.cfg` a section *minion-local*::
 
     [minion-local]
     #config
+    user = root
     root_dir = ${buildout:directory}/etc
     pki_dir = ${buildout:directory}/etc/salt/pki
     log_file = ${buildout:directory}/var/log/minion
@@ -47,7 +48,7 @@ Start master::
 
     $ ./bin/salt-master -c etc/master -l debug
 
-Start Minion
+Start minion
 ------------
 
 Start minion::
