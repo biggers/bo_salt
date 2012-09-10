@@ -60,3 +60,9 @@ Start minion::
 
     $ ./bin/salt-minion -c etc/minion -l debug
 
+Accpet "A"ll keys
+-----------------
+The is a bug in salt-key so we need to specify a key-logfile::
+
+    $ bin/salt-key -A -c etc/master --key-logfile=foo
+
