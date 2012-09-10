@@ -21,7 +21,7 @@ Add to `buildout.cfg` a section *master*::
 
     [master]
     #config
-    user = root
+    user = root #or current user
     root_dir = ${buildout:directory}/etc
     pki_dir = ${buildout:directory}/etc/salt/pki
     log_file = ${buildout:directory}/var/log/master
@@ -31,7 +31,7 @@ Add to `buildout.cfg` a section *minion-local*::
 
     [minion-local]
     #config
-    user = root
+    user = root #or current user
     root_dir = ${buildout:directory}/etc
     pki_dir = ${buildout:directory}/etc/salt/pki
     log_file = ${buildout:directory}/var/log/minion
