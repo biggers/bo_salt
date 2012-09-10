@@ -25,13 +25,13 @@
 
 # The root directory prepended to these options: pki_dir, cachedir,
 # sock_dir, log_file, autosign_file.
-#root_dir: /
+root_dir: ${root_dir}
 
 # Directory used to store public key data
-#pki_dir: /etc/salt/pki
+pki_dir: ${pki_dir}
 
 # Directory to store job and cache data
-#cachedir: /var/cache/salt
+cachedir: ${cachedir}
 
 # Set the number of hours to keep old job information
 #keep_jobs: 24
@@ -285,7 +285,7 @@
 #####         Logging settings       #####
 ##########################################
 # The location of the master log file
-#log_file: /var/log/salt/master
+log_file: ${log_file}
 #
 # The level of messages to send to the log file.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.

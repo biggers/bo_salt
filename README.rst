@@ -9,37 +9,48 @@ Requirements
 
 Install
 -------
-Run buildout as usual::
+First wee need to set a environment variabel or we wont get start scripts::
 
     $ export USE_SETUPTOOLS=1
-    $ python2.7 bootstrap.py -d
-    $ bin/buildout.cfg
 
-Start Master
+Run bootstrap::    
+
+    $ python2.7 bootstrap.py -d
+
+Add to `buildout.cfg` a section *master*::
+
+    [master]
+    #config
+    user = root
+    root_dir = ${buildout:directory}/etc
+    pki_dir = ${buildout:directory}/etc/salt/pki
+    log_file = ${buildout:directory}/var/log/master
+    cachedir = ${buildout:directory}/var/cache/salt
+
+Add to `buildout.cfg` a section *minion-local*::
+
+    [minion-local]
+    #config
+    root_dir = ${buildout:directory}/etc
+    pki_dir = ${buildout:directory}/etc/salt/pki
+    log_file = ${buildout:directory}/var/log/minion
+    cachedir = ${buildout:directory}/var/cache/salt
+
+Run buildout::
+
+    $ bin/buildout
+
+Start master
 ------------
 
-1. Copy `templates/master.template` to `etc/master`::
-
-    $ cp templates/master.template etc/master
-
-2. Edit default settings. Change `var` and `etc` folders to lokal path. Set
-   `user` to current user.
-
-3. Start master::
+Start master::
 
     $ ./bin/salt-master -c etc/master -l debug
-
 
 Start Minion
 ------------
 
-1. Copy `templates/minion.template` to `etc/minion`::
-
-    $ cp templates/minion.template etc/minion
-
-2. Edit default settings.
-
-3. Start minion::
+Start minion::
 
     $ ./bin/salt-minion -c etc/minion -l debug
 

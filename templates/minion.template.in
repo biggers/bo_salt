@@ -14,13 +14,13 @@
 #master_port: 4506
 
 # The user to run salt
-#user: root
+user: ${user}
 
 # The root directory prepended to these options: pki_dir, cachedir, log_file.
-#root_dir: /
+root_dir: %{root_dir}
 
 # The directory to store the pki information in
-#pki_dir: /etc/salt/pki
+pki_dir: ${pki_dir}
 
 # Explicitly declare the id for this minion to use, if left commented the id
 # will be the hostname as returned by the python call: socket.getfqdn()
@@ -41,7 +41,7 @@
 #sub_timeout: 60
 
 # Where cache data goes
-#cachedir: /var/cache/salt
+cachedir: ${cachedir}
 
 # The minion can locally cache the return data from jobs sent to it, this
 # can be a good way to keep track of jobs the minion has executed
@@ -222,7 +222,7 @@
 ######         Logging settings       #####
 ###########################################
 # The location of the minion log file
-#log_file: /var/log/salt/minion
+log_file: ${log_file}
 #
 # The level of messages to send to the log file.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.
