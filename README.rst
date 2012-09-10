@@ -72,3 +72,26 @@ This is our first try to call remote commands::
 
     $ bin/salt -c etc/master '*'  cmd.exec_code python 'import sys; print sys.version
 
+Minionswarm
+-----------
+To try more than one minion we can use the script `minionswarm.py`, but need it
+to run as *root*. There is a issues withc supports `script-root`. 
+https://github.com/saltstack/salt/issues/2004
+
+Run master::
+
+    $ sudo bin/salt-master
+
+Run minionswarm::
+
+    $ wget https://raw.github.com/saltstack/salt/develop/tests/minionswarm.py
+    $ sudo bin/py minionswarm.py --script-root `pwd`/bin/
+
+Accept keys::
+
+    $ sudo bin/salt-keys -A 
+    
+Run remote command::
+
+    sudo bin/salt '*' test.ping
+
