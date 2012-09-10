@@ -43,6 +43,11 @@ Run buildout::
 
 Start master
 ------------
+First wee need to configure ``DNS`` to point to out salt master or simply add it
+to `/etc/hosts`::
+
+    $ vim /etc/hosts
+    127.0.0.1 salt
 
 Start master::
 
