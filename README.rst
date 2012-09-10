@@ -66,3 +66,9 @@ The is a bug in salt-key so we need to specify a key-logfile::
 
     $ bin/salt-key -A -c etc/master --key-logfile=foo
 
+Call remote commands
+--------------------
+This is our first try to call remote commands::
+
+    $ bin/salt -c etc/master '*'  cmd.exec_code python 'import sys; print sys.version
+
