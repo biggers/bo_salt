@@ -13,7 +13,7 @@
 #publish_port: 4505
 
 # The user to run salt
-user: ${user}
+user: ${options['user']}
 
 # The number of worker threads to start, these threads are used to manage
 # return calls made from minions to the master, if the master seems to be
@@ -25,13 +25,13 @@ user: ${user}
 
 # The root directory prepended to these options: pki_dir, cachedir,
 # sock_dir, log_file, autosign_file.
-root_dir: ${root_dir}
+root_dir: ${options['root_dir']}
 
 # Directory used to store public key data
-pki_dir: ${pki_dir}
+pki_dir: ${options['pki_dir']}
 
 # Directory to store job and cache data
-cachedir: ${cachedir}
+cachedir: ${options['cachedir']}
 
 # Set the number of hours to keep old job information
 #keep_jobs: 24
@@ -178,6 +178,12 @@ cachedir: ${cachedir}
 #file_roots:
 #  base:
 #    - /srv/salt
+{% if options.get('file_roots', None) %}
+file_roots: 
+{% for i, item in enumerate(options['file_roots'].split('\n')) %}\
+ ${" " * i, item}
+{% end %}
+{% end %}
 
 # The hash_type is the hash to use when discovering the hash of a file on
 # the master server, the default is md5, but sha1, sha224, sha256, sha384
@@ -285,7 +291,7 @@ cachedir: ${cachedir}
 #####         Logging settings       #####
 ##########################################
 # The location of the master log file
-log_file: ${log_file}
+log_file: ${options['log_file']}
 #
 # The level of messages to send to the log file.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.

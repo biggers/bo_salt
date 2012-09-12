@@ -14,13 +14,13 @@
 #master_port: 4506
 
 # The user to run salt
-user: ${user}
+user: ${options['user']}
 
 # The root directory prepended to these options: pki_dir, cachedir, log_file.
-root_dir: ${root_dir}
+root_dir: ${options['root_dir']}
 
 # The directory to store the pki information in
-pki_dir: ${pki_dir}
+pki_dir: ${options['pki_dir']}
 
 # Explicitly declare the id for this minion to use, if left commented the id
 # will be the hostname as returned by the python call: socket.getfqdn()
@@ -41,7 +41,7 @@ pki_dir: ${pki_dir}
 #sub_timeout: 60
 
 # Where cache data goes
-cachedir: ${cachedir}
+cachedir: ${options['cachedir']}
 
 # The minion can locally cache the return data from jobs sent to it, this
 # can be a good way to keep track of jobs the minion has executed
@@ -175,6 +175,12 @@ cachedir: ${cachedir}
 #file_roots:
 #  base:
 #    - /srv/salt
+{% if options.get('file_roots', None) %}
+file_roots: 
+{% for i, item in enumerate(options['file_roots'].split('\n')) %}\
+ ${" " * i, item}
+{% end %}
+{% end %}
 
 # The hash_type is the hash to use when discovering the hash of a file in
 # the minion directory, the default is md5, but sha1, sha224, sha256, sha384
@@ -222,7 +228,7 @@ cachedir: ${cachedir}
 ######         Logging settings       #####
 ###########################################
 # The location of the minion log file
-log_file: ${log_file}
+log_file: ${options['log_file']}
 #
 # The level of messages to send to the log file.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.

@@ -6,6 +6,7 @@ Requirements
 
 - python-dev
 - swig
+- uuid-dev
 
 Install
 -------
@@ -26,6 +27,9 @@ Add to `buildout.cfg` a section *master*::
     pki_dir = ${buildout:directory}/etc/salt/pki
     log_file = ${buildout:directory}/var/log/master
     cachedir = ${buildout:directory}/var/cache/salt
+    file_roots =
+        base:
+            - ${buildout:directory}/salt
 
 Add to `buildout.cfg` a section *minion-local*::
 
@@ -36,6 +40,9 @@ Add to `buildout.cfg` a section *minion-local*::
     pki_dir = ${buildout:directory}/etc/salt/pki
     log_file = ${buildout:directory}/var/log/minion
     cachedir = ${buildout:directory}/var/cache/salt
+    file_roots =
+        base:
+            - ${buildout:directory}/salt
 
 Run buildout::
 
