@@ -1,0 +1,15 @@
+salt/
+├── python/
+│   ├── init.sls
+│   └── local.cfg
+├── vim/
+│   ├── init.sls
+│   └── vimrc
+├── webserver/
+│   ├── index.html
+│   └── init.sls
+├── core.sls
+├── top.sls
+└── tree.txt
+
+3 directories, 9 files

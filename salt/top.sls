@@ -1,0 +1,5 @@
+base:
+  '*':
+    - webserver
+    - vim
+    - python
