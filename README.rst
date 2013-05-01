@@ -3,13 +3,33 @@ Buildout for salt
 
 Requirements
 ------------
+This new `buildout.cfg` here, relies on your Linux distributions packages-set, for Python modules of ZeroMQ, OpenSSL, M2Crypto, and Jinja2.
+
+This install assumes an "up to date" Python2.7 environment, on a Fedora, OpenSUSE, Debian or Ubuntu distro.
+
+Install
+-------
+We need to "bootstrap" our buildout of Salt: ::
+
+ script -a -c "python2.7 bootstrap.py" build.log
+
+And then run `zc.buildout`: ::
+
+ script -a -c "bin/buildout -vc buildout.cfg"  build.log
+
+The Salt "main script" is in the `bin/` directory.
+
+
+Install.prev
+-------------
+Salt for CentOS 5.x, 6.x (and Debian 6.x?) needs a full Python 2.7 build, and you need to use `install_develop.cfg` in that case, and these packages
 
 - python-dev
 - swig
 - uuid-dev
 
-Install
--------
+NOTE: these are older build instructions, for `bo_salt`, for reference purposes.
+
 First wee need to set a environment variabel or we wont get start scripts::
 
     $ export USE_SETUPTOOLS=1
