@@ -296,7 +296,8 @@ log_file: ${options['log_file']}
 # The level of messages to send to the log file.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.
 # Default: 'warning'
-#log_level: warning
+log_level: ${options['log_level']}
+
 #log_level_logfile:
 #
 # The date and time format used in log messages. Allowed date/time formating
