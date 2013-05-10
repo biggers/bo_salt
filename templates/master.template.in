@@ -1,4 +1,4 @@
-##### Primary configuration settings #####
+##### Primary configuration settings #####  -*-conf-*-
 ##########################################
 
 # Per default the master will automatically include all config files
@@ -7,10 +7,10 @@
 #default_include: master.d/*.conf
 
 # The address of the interface to bind to
-#interface: 0.0.0.0
+# interface: 0.0.0.0
 
 # The port used by the publisher
-#publish_port: 4505
+# publish_port: 4505
 
 # The user to run salt
 user: ${options['user']}
@@ -21,17 +21,17 @@ user: ${options['user']}
 #worker_threads: 5
 
 # The port used by the communication interface
-#ret_port: 4506
+# ret_port: 4506
 
 # The root directory prepended to these options: pki_dir, cachedir,
 # sock_dir, log_file, autosign_file.
-root_dir: ${options['root_dir']}
+root_dir: ${options['root_dir']}/
 
 # Directory used to store public key data
-pki_dir: ${options['pki_dir']}
+pki_dir: etc/salt/pki
 
 # Directory to store job and cache data
-cachedir: ${options['cachedir']}
+cachedir: var/cache/salt
 
 # Set the number of hours to keep old job information
 #keep_jobs: 24
@@ -90,7 +90,7 @@ cachedir: ${options['cachedir']}
 # If the autosign_file is specified only incoming keys specified in
 # the autosign_file will be automatically accepted. This is insecure.
 # Regular expressions as well as globing lines are supported.
-#autosign_file: /etc/salt/autosign.conf
+autosign_file: etc/salt/autosign.conf
 
 # Enable permissive access to the salt keys.  This allows you to run the
 # master or minion as root, but have a non-root group be given access to
@@ -181,7 +181,7 @@ cachedir: ${options['cachedir']}
 {% if options.get('file_roots', None) %}
 file_roots: 
 {% for i, item in enumerate(options['file_roots'].split('\n')) %}\
- ${" " * i, item}
+${" " * i, item}
 {% end %}
 {% end %}
 
@@ -291,7 +291,7 @@ file_roots:
 #####         Logging settings       #####
 ##########################################
 # The location of the master log file
-log_file: ${options['log_file']}
+log_file: var/log/master
 #
 # The level of messages to send to the log file.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.

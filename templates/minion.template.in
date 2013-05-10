@@ -1,4 +1,4 @@
-##### Primary configuration settings #####
+##### Primary configuration settings #####  -*-conf-*-
 ##########################################
 
 # Per default the minion will automatically include all config files
@@ -17,10 +17,10 @@
 user: ${options['user']}
 
 # The root directory prepended to these options: pki_dir, cachedir, log_file.
-root_dir: ${options['root_dir']}
+root_dir: ${options['root_dir']}/
 
 # The directory to store the pki information in
-pki_dir: ${options['pki_dir']}
+pki_dir: etc/salt/pki
 
 # Explicitly declare the id for this minion to use, if left commented the id
 # will be the hostname as returned by the python call: socket.getfqdn()
@@ -41,7 +41,7 @@ pki_dir: ${options['pki_dir']}
 #sub_timeout: 60
 
 # Where cache data goes
-cachedir: ${options['cachedir']}
+cachedir: var/cache/salt
 
 # The minion can locally cache the return data from jobs sent to it, this
 # can be a good way to keep track of jobs the minion has executed
@@ -228,7 +228,7 @@ file_roots:
 ######         Logging settings       #####
 ###########################################
 # The location of the minion log file
-log_file: ${options['log_file']}
+log_file: var/log/minion
 #
 # The level of messages to send to the log file.
 # One of 'garbage', 'trace', 'debug', info', 'warning', 'error', 'critical'.
